@@ -1,15 +1,14 @@
+package Seminar_03;
 /* На шахматной доске расставить 8 ферзей так, чтобы они не били друг друга. */
 
 class NQueenProblem {
     final int N = 8;
 
     /* Функция для вывода результата в консоль */
-    void printSolution(int board[][])
-    {
+    void printSolution(int board[][]) {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++)
-                System.out.print(" " + board[i][j]
-                        + " ");
+                System.out.printf(" %d ", board[i][j]);
             System.out.println();
         }
     }
@@ -19,8 +18,7 @@ class NQueenProblem {
     вызывается после того как позиции "col" ферзей уже
     раположились между 0 и col -1. Поэтому нам нужна проверка
     только левой стороны на возможность атаки ферзей */
-    boolean isSafe(int board[][], int row, int col)
-    {
+    boolean isSafe(int board[][], int row, int col) {
         int i, j;
 
         /* Проверка строки row с левой стороны */
@@ -42,9 +40,8 @@ class NQueenProblem {
     }
 
     /* Рекурсивная функция для решения основной задачи */
-    boolean solveNQUtil(int board[][], int col)
-    {
-		/* Если все ферзи уже расположены, возвращаем true */
+    boolean solveNQUtil(int board[][], int col) {
+        /* Если все ферзи уже расположены, возвращаем true */
         if (col >= N)
             return true;
 
@@ -79,8 +76,7 @@ class NQueenProblem {
     Она возвращает false если ферзей не получается
     разместить, иначе возращает true и выводит
     расположение ферзей в виде цифр 1. */
-    boolean solveNQ()
-    {
+    boolean solveNQ() {
         int board[][] = new int[N][N];
 
         if (solveNQUtil(board, 0) == false) {
@@ -93,8 +89,7 @@ class NQueenProblem {
     }
 
     // driver program to test above function
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         NQueenProblem Queen = new NQueenProblem();
         Queen.solveNQ();
     }

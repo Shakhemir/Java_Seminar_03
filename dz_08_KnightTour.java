@@ -4,25 +4,23 @@ package Seminar_03;
    чтобы фигура в каждой клетке была строго один раз */
 
 class KnightTour {
-    static int N = 8;
+    static int N = 9;
 
     /* xMove[] и yMove[] определяют следующий ход коня.
     xMove[] для следующего хода по x координате
     yMove[] для следующего хода по y координате */
-    static int xMove[] = { 2, 1, -1, -2, -2, -1, 1, 2 };
-    static int yMove[] = { 1, 2, 2, 1, -1, -2, -2, -1 };
+    static int xMove[] = {2, 1, -1, -2, -2, -1, 1, 2};
+    static int yMove[] = {1, 2, 2, 1, -1, -2, -2, -1};
 
     /* Функция для проверки координат x, y
     что они внутри поля NxN и ячейка свободна */
-    static boolean isSafe(int x, int y, int sol[][])
-    {
+    static boolean isSafe(int x, int y, int sol[][]) {
         return (x >= 0 && x < N && y >= 0 && y < N
                 && sol[x][y] == -1);
     }
 
     /* Функция для вывода в консоль матрицы решения sol[N][N] */
-    static void printSolution(int sol[][])
-    {
+    static void printSolution(int sol[][]) {
         for (int x = 0; x < N; x++) {
             for (int y = 0; y < N; y++)
                 System.out.printf(" %2d ", sol[x][y]);
@@ -35,8 +33,7 @@ class KnightTour {
     функция solveKTUtil() для решения задачи. Она
     возвращяет false если нет возможного решения,
     иначе возвращает true и выводит результат пути */
-    static boolean solveKT()
-    {
+    static boolean solveKT() {
         int sol[][] = new int[N][N];
 
         /* Создаем матрицу решения задачи */
@@ -52,8 +49,7 @@ class KnightTour {
         if (!solveKTUtil(0, 0, 1, sol)) {
             System.out.println("Задача не имеет решения");
             return false;
-        }
-        else
+        } else
             printSolution(sol);
 
         return true;
@@ -62,8 +58,7 @@ class KnightTour {
     /* Рекурсивная функия для решения задачи
     прохождения коня по доске */
     static boolean solveKTUtil(int x, int y, int movei,
-                               int sol[][])
-    {
+                               int sol[][]) {
         int k, next_x, next_y;
         if (movei == N * N)
             return true;
@@ -88,8 +83,7 @@ class KnightTour {
     }
 
     /* Driver Code */
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         // Вызов функции
         solveKT();
     }
